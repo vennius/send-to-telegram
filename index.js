@@ -11,8 +11,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post("/send", async (req, res) => {
   try{
-    if(!req.body.data) throw "Data property not found!"
-    await tele.sendMessage(process.env.SENDTO_ID, req.body.data)
+    if(!req.query.data) throw "Data query not found!"
+    await tele.sendMessage(process.env.SENDTO_ID, req.query.data)
     res.json({
       status: "oke"
     })
